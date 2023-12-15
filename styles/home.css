@@ -1,0 +1,27 @@
+section.home {
+  height: 100lvh;
+}
+
+section.how__works {
+  padding: 6em 4em 0;
+  height: 100lvh;
+  background-color: aqua;
+}
+
+section.services {
+  padding: 6em 4em 0;
+  height: 100lvh;
+  background-color: rgb(255, 81, 0);
+}
+
+section.pricing {
+  padding: 6em 4em 0;
+  height: 100lvh;
+  background-color: rgb(0, 177, 177);
+}
+
+section.contact {
+  padding: 6em 4em 0;
+  height: 100lvh;
+  background-color: rgb(217, 255, 0);
+}

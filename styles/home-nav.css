@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  height: 60px;
+  background-color: #000000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.header__logo {
+  width: 6em;
+  height: 6em;
+}
+.nav__link {
+  display: inline;
+  color: rgb(255, 255, 255);
+  margin: 0 2em;
+  font-weight: 600;
+}
+
+.header__menu {
+  display: flex;
+}
+
+.header__cta {
+  color: white;
+  font-weight: 600;
+}
+
+.cover {
+  height: 100lvh;
+}
