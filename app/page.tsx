@@ -1,3 +1,4 @@
+import Footer from '@/ui/home/footer';
 import Header from '@/ui/home/header';
 import Hero from '@/ui/home/hero';
 
@@ -44,6 +45,7 @@ export default function Home() {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
         </p>
       </section>
+      <Footer />
     </>
   );
 }
