@@ -1,0 +1,26 @@
+.clientForm {
+  margin: 1em auto;
+  width: 24em;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+}
+.clientForm label {
+  display: block;
+  margin: 0.5em 0;
+}
+.clientForm input {
+  width: 100%;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 0.25em;
+}
+.clientForm button {
+  width: 100%;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 0.25em;
+  background-color: #ccc;
+  cursor: pointer;
+  margin-top: 1em;
+}
