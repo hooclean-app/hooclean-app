@@ -1,1 +1,33 @@
-export const MyCONSTANTS = '';
+export const ClientRegister_INITIAL_STATE: ClientRegister = {
+  name: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+  role: 'client',
+  phone: '',
+  address: '',
+  address2: '',
+  city: '',
+  region: '',
+  postCode: '',
+  country: '',
+  company: '',
+  CIF: '',
+};
+
+export const dataValidation_INITIAL_VALUE = {
+  name: true,
+  email: true,
+  password: true,
+  confirmPassword: true,
+  phone: true,
+  address: true,
+  address2: true,
+  city: true,
+  region: true,
+  postCode: true,
+  country: true,
+  company: true,
+  CIF: true,
+  allfields: false,
+};
