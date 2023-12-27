@@ -3,12 +3,12 @@ import db from '../../../../lib/db';
 import bcrypt from 'bcrypt';
 
 export async function POST(request: {
-  json: () => userDataTest | PromiseLike<userData>;
+  json: () => ClientRegister | PromiseLike<ClientRegister>;
 }) {
   try {
-    const data: userDataTest = await request.json();
+    const data: ClientRegister = await request.json();
     console.log(data);
-    const userFound = await db.user.findUnique({
+    const userFound = await db.client.findUnique({
       where: { email: data.email },
     });
 
@@ -20,25 +20,36 @@ export async function POST(request: {
     }
 
     const hashedPassword = await bcrypt.hash(data.password, 10);
-
-    const newUser = await db.user.create({
+    console.log(data, hashedPassword);
+    const newUser = await db.client.create({
       data: {
         email: data.email,
         name: data.name,
-        role: 'user',
         password: hashedPassword,
-        phone: '666666666',
-        address: 'Calle osuhksljv',
-        postCode: '28080',
-        company: 'HooClean',
-        CIF: 'GG1234567',
+        role: data.role,
+        phone: data.phone,
+        address: data.address,
+        address2: data.address2,
+        city: data.city,
+        region: data.region,
+        postCode: data.postCode,
+        country: data.country,
+        company: data.company,
+        CIF: data.CIF,
       },
     });
     console.log('aquí=', newUser);
     const { password: _, ...user } = newUser;
     return NextResponse.json({ user });
   } catch (error) {
-    return NextResponse.json({ message: error.message }, { status: 500 });
+    if (error instanceof Error) {
+      return NextResponse.json({ message: error.message }, { status: 500 });
+    } else {
+      return NextResponse.json(
+        { message: 'An unknown error occurred' },
+        { status: 500 }
+      );
+    }
   }
 }
 

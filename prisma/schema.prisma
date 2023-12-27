@@ -9,17 +9,60 @@ datasource db {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
+  id        String    @id @default(uuid())
   email     String    @unique
   name      String
   role      String
   password  String
   phone     String
   address   String
+  address2  String?
+  city      String
+  region    String?
   postCode  String
-  company   String
-  CIF       String    @unique
+  country   String
+  company   String?
+  CIF       String?   @unique
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
+  Job       Job[]
+}
+
+model Client {
+  id        String    @id @default(uuid())
+  email     String    @unique
+  name      String
+  role      String
+  password  String
+  phone     String
+  address   String
+  address2  String?
+  city      String
+  region    String?
+  postCode  String
+  country   String
+  company   String?
+  CIF       String?   @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  Job       Job[]
+}
+
+model Job {
+  id         String    @id @default(uuid())
+  name       String
+  client     Client    @relation(fields: [clientId], references: [id])
+  clientId   String
+  user       User      @relation(fields: [userId], references: [id])
+  userId     String
+  date       DateTime
+  comments   String?
+  jobType    String
+  recurrence String
+  status     String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime?
 }

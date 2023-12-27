@@ -1,6 +1,6 @@
 'use client';
 import { useForm } from 'react-hook-form';
-import { signIn } from 'next-auth/react';
+
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -16,13 +16,6 @@ function LoginPage() {
   const onSubmit = handleSubmit(async (data) => {
     console.log(data);
 
-    const res = await signIn('credentials', {
-      email: data.email,
-      password: data.password,
-      redirect: false,
-    });
-
-    console.log(res);
     //     if (res.error) {
     //       setError(res.error);
     //     } else {
@@ -63,10 +56,6 @@ function LoginPage() {
           placeholder="user@email.com"
         />
 
-        {errors.email && (
-          <span className="text-red-500 text-xs">{errors.email.message}</span>
-        )}
-
         <label
           htmlFor="password"
           className="text-slate-500 mb-2 block text-sm"
@@ -85,11 +74,7 @@ function LoginPage() {
           placeholder="******"
         />
 
-        {errors.password && (
-          <span className="text-red-500 text-xs">
-            {errors.password.message}
-          </span>
-        )}
+        {errors.password && <span className="text-red-500 text-xs"></span>}
 
         <button className="w-full bg-blue-500 text-white p-3 rounded-lg mt-2">
           Login
