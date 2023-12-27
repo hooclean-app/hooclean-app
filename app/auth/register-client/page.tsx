@@ -28,10 +28,16 @@ export default function Page() {
               name={field.name}
               onChange={getData}
               key={index}
+              className={!validation[field.errorName] ? 'formWarning' : ''}
             />
 
             {field.error !== '' && !validation[field.errorName] && (
-              <p key={`error-${field.name}`}>{field.error}</p>
+              <p
+                key={`error-${field.name}`}
+                className="formWarning"
+              >
+                {field.error}
+              </p>
             )}
           </React.Fragment>
         ))}
