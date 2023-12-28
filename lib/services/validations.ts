@@ -14,7 +14,7 @@ export const validateData = (values: ClientRegister) => {
     confirmPassword: values.password === values.confirmPassword,
     phone: regexNineDigits.test(values.phone),
     address: regexSpecialCharacters.test(values.address),
-    address2: regexSpecialCharacters.test(values.address2 || 'd'),
+    address2: regexSpecialCharacters.test(values.address2 || 'ddddddddd'),
     city: regexTwoCharacters.test(values.city),
     region: regexTwoCharacters.test(values.region),
     postCode: regexFiveDigits.test(values.postCode),
@@ -28,7 +28,6 @@ export const validateData = (values: ClientRegister) => {
       values.password === values.confirmPassword &&
       regexNineDigits.test(values.phone) &&
       regexSpecialCharacters.test(values.address) &&
-      regexSpecialCharacters.test(values.address2 || 'd') &&
       regexTwoCharacters.test(values.city) &&
       regexTwoCharacters.test(values.region) &&
       regexFiveDigits.test(values.postCode) &&

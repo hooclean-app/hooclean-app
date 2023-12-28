@@ -23,6 +23,8 @@ export default function Page() {
               </label>
             )}
             <input
+              autoComplete={field.autocomplete}
+              id={field.name}
               type={field.type}
               placeholder={field.placeholder}
               name={field.name}
@@ -48,6 +50,7 @@ export default function Page() {
           type="checkbox"
           name="terms"
           onChange={getData}
+          id="terms"
         />
         <label htmlFor="terms">Acepto los términos y condiciones</label>
         <button

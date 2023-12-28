@@ -1,6 +1,7 @@
 export const userFormTextInputs = [
   {
     name: 'name',
+    autocomplete: 'name',
     label: 'Nombre',
     type: 'text',
     placeholder: 'Nombre',
@@ -10,6 +11,7 @@ export const userFormTextInputs = [
 
   {
     name: 'email',
+    autocomplete: 'email',
     label: 'Email',
     type: 'email',
     placeholder: 'Email',
@@ -18,6 +20,7 @@ export const userFormTextInputs = [
   },
   {
     name: 'phone',
+    autocomplete: 'tel',
     label: 'Teléfono',
     type: 'phone',
     placeholder: '999 99 99',
@@ -26,6 +29,7 @@ export const userFormTextInputs = [
   },
   {
     name: 'address',
+    autocomplete: 'address-line1',
     label: 'Dirección',
     type: 'address',
     placeholder: 'nombre de la calle, número, piso, puerta',
@@ -34,6 +38,7 @@ export const userFormTextInputs = [
   },
   {
     name: 'address2',
+    autocomplete: 'address-line2',
     label: '',
     type: 'address2',
     placeholder: '',
@@ -42,6 +47,7 @@ export const userFormTextInputs = [
   },
   {
     name: 'city',
+    autocomplete: 'address-line3',
     label: 'Población',
     type: 'city',
     placeholder: 'Madrid',
@@ -50,14 +56,16 @@ export const userFormTextInputs = [
   },
   {
     name: 'region',
+    autocomplete: 'off',
     label: 'Comunidad autonoma',
     type: 'region',
     placeholder: 'Comunidad autonoma',
     errorName: 'region',
-    error: 'La región no es correcto',
+    error: 'La región no es correcta',
   },
   {
     name: 'postCode',
+    autocomplete: 'postal-code',
     label: 'Código postal',
     type: 'postCode',
     placeholder: 'Código postal',
@@ -67,6 +75,7 @@ export const userFormTextInputs = [
   },
   {
     name: 'country',
+    autocomplete: 'country-name',
     label: 'País',
     type: 'country',
     placeholder: 'País',
@@ -76,6 +85,7 @@ export const userFormTextInputs = [
   },
   {
     name: 'company',
+    autocomplete: 'off',
     label: 'Nombre de la empresa',
     type: 'company',
     placeholder: 'Mi empresa',
@@ -84,6 +94,7 @@ export const userFormTextInputs = [
   },
   {
     name: 'CIF',
+    autocomplete: 'off',
     label: 'Número Cif',
     type: 'CIF',
     placeholder: 'Mi empresa',
@@ -92,6 +103,7 @@ export const userFormTextInputs = [
   },
   {
     name: 'password',
+    autocomplete: 'off',
     label: 'Password',
     type: 'Password',
     placeholder: 'Password',
@@ -101,6 +113,7 @@ export const userFormTextInputs = [
   },
   {
     name: 'confirmPassword',
+    autocomplete: 'off',
     label: 'Confirm Password',
     type: 'confirmPassword',
     placeholder: 'confirmPassword',

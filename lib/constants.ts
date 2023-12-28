@@ -15,6 +15,23 @@ export const ClientRegister_INITIAL_STATE: ClientRegister = {
   CIF: '',
 };
 
+export const UserRegister_INITIAL_STATE: ClientRegister = {
+  name: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+  role: 'user',
+  phone: '',
+  address: '',
+  address2: '',
+  city: '',
+  region: '',
+  postCode: '',
+  country: '',
+  company: '',
+  CIF: '',
+};
+
 export const dataValidation_INITIAL_VALUE = {
   name: false,
   email: false,
