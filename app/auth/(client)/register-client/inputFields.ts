@@ -1,4 +1,4 @@
-export const clientFormTextInputs = [
+export const clientFormTextInputs: FormTextInputs[] = [
   {
     name: 'name',
     autocomplete: 'name',

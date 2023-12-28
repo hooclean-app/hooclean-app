@@ -3,6 +3,7 @@
 import { useClientForm } from '@/lib/hooks/useClientForm';
 import React from 'react';
 import { userFormTextInputs } from './inputFields';
+import TermsInput from '@/ui/global/TermsInput';
 export default function Page() {
   const { getData, submit, validation, onFocus } = useClientForm();
 
@@ -57,16 +58,10 @@ export default function Page() {
           </React.Fragment>
         ))}
 
-        <input
-          type="checkbox"
-          name="terms"
-          onChange={getData}
-          id="terms"
+        <TermsInput
+          validation={validation.terms}
+          getData={getData}
         />
-        <label htmlFor="terms">Acepto los términos y condiciones</label>
-        {!validation.terms && (
-          <p className="formWarning">Acepte las condiciones del servicio.</p>
-        )}
         <button
           disabled={!validation.allfields}
           type="submit"

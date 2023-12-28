@@ -3,6 +3,9 @@
 import { useClientForm } from '@/lib/hooks/useClientForm';
 import React from 'react';
 import { clientFormTextInputs } from './inputFields';
+import TermsInput from '@/ui/global/TermsInput';
+import FormButton from '@/ui/global/FormButton';
+import FormFields from '@/ui/global/FormFields';
 export default function Page() {
   const { getData, submit, validation, onFocus } = useClientForm();
 
@@ -12,67 +15,19 @@ export default function Page() {
         action=""
         onSubmit={submit}
       >
-        {clientFormTextInputs.map((field, index) => (
-          <React.Fragment key={index + field.name}>
-            {field.label !== '' && (
-              <label
-                htmlFor={field.name}
-                key={field.name}
-              >
-                {field.label}
-              </label>
-            )}
-            <input
-              autoComplete={field.autocomplete}
-              id={field.name}
-              type={field.type}
-              placeholder={field.placeholder}
-              name={field.name}
-              onChange={getData}
-              key={index}
-              className={!validation[field.name] ? 'formWarning' : ''}
-              {...(field.list ? { list: `${field.name}-list` } : {})}
-            />
-            {field.list && (
-              <datalist id={`${field.name}-list`}>
-                {field.list.map((item, index) => (
-                  <option
-                    key={index}
-                    value={item}
-                  />
-                ))}
-              </datalist>
-            )}
-            {field.error !== '' &&
-              !validation[field.errorName] &&
-              onFocus[field.errorName] && (
-                <p
-                  key={`error-${field.name}`}
-                  className="formWarning"
-                >
-                  {field.error}
-                </p>
-              )}
-          </React.Fragment>
-        ))}
-
-        <input
-          type="checkbox"
-          name="terms"
-          onChange={getData}
-          id="terms"
+        <FormFields
+          clientFormTextInputs={clientFormTextInputs}
+          validation={validation}
+          getData={getData}
+          onFocus={onFocus}
         />
-        <label htmlFor="terms">Acepto los términos y condiciones</label>
-        {!validation.terms && (
-          <p className="formWarning">Acepte las condiciones del servicio.</p>
-        )}
-        <button
-          disabled={!validation.allfields}
-          type="submit"
-          className={!validation.allfields ? 'disabled' : ''}
-        >
-          Registrarme
-        </button>
+
+        <TermsInput
+          validation={validation.terms}
+          getData={getData}
+        />
+
+        <FormButton validation={validation.allfields} />
       </form>
     </div>
   );

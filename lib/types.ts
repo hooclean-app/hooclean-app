@@ -72,3 +72,14 @@ interface User {
   createdAt: Date;
   updatedAt: Date;
 }
+
+interface FormTextInputs {
+  name: string;
+  autocomplete?: string;
+  label: string;
+  type: string;
+  placeholder: string;
+  errorName: string;
+  error: string;
+  list?: string[];
+}
