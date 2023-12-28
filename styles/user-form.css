@@ -1,22 +1,22 @@
-.clientForm {
+.registerForm {
   margin: 1em auto;
   width: 24em;
   padding: 1em;
   border: 1px solid #ccc;
   border-radius: 1em;
 }
-.clientForm label {
+.registerForm label {
   display: block;
   margin: 0.5em 0;
 }
-.clientForm input {
+.registerForm input {
   width: 100%;
   padding: 0.5em;
   border: 1px solid #ccc;
   border-radius: 0.25em;
   margin-bottom: 1em;
 }
-.clientForm button {
+.registerForm button {
   width: 100%;
   padding: 0.5em;
   border: 1px solid #ccc;

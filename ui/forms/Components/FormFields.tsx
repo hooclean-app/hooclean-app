@@ -4,21 +4,21 @@ import InputValuesList from './InputValuesList';
 import InputWarnings from './InputWarnings';
 
 interface Props {
-  clientFormTextInputs: FormTextInputs[];
+  FormTextInputs: FormTextInputs[];
   validation: Record<string, boolean>;
   getData: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onFocus: Record<string, boolean>;
 }
 
 export default function FormFields({
-  clientFormTextInputs,
+  FormTextInputs,
   validation,
   getData,
   onFocus,
 }: Props) {
   return (
     <div>
-      {clientFormTextInputs.map((field, index) => (
+      {FormTextInputs.map((field, index) => (
         <React.Fragment key={index + field.name}>
           <FormInputs
             field={field}
