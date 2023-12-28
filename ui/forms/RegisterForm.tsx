@@ -4,13 +4,14 @@ import React from 'react';
 import FormFields from './Components/FormFields';
 import TermsInput from './Components/TermsInput';
 import FormButton from './Components/FormButton';
-import { useClientForm } from '@/lib/hooks/useClientForm';
+import { useForm } from '@/lib/hooks/useForm';
 
 interface Props {
   FormTextInputs: FormTextInputs[];
+  userType: UserTypes;
 }
-export default function RegisterForm({ FormTextInputs }: Props) {
-  const { getData, submit, validation, onFocus } = useClientForm();
+export default function RegisterForm({ FormTextInputs, userType }: Props) {
+  const { getData, submit, validation, onFocus } = useForm(userType);
   return (
     <div className="registerForm">
       <form

@@ -1,3 +1,4 @@
+// Registration data
 export const ClientRegister_INITIAL_STATE: ClientRegister = {
   name: '',
   email: '',
@@ -44,6 +45,7 @@ export const UserRegister_INITIAL_STATE: UserRegister = {
   terms: false,
 };
 
+// Reset validation object
 export const dataValidation_INITIAL_VALUE = {
   name: false,
   email: false,
@@ -60,4 +62,10 @@ export const dataValidation_INITIAL_VALUE = {
   CIF: false,
   terms: false,
   allfields: false,
+};
+
+// UserTypes
+export const userTypes: Record<UserTypes, UserTypes> = {
+  client: 'client',
+  user: 'user',
 };
