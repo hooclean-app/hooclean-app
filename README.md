@@ -36,7 +36,7 @@ npx prisma migrate dev --name init
 
 2. Update the migration using Turso's CLI:
 ```
-npx prisma migrate dev --name init
+turso db shell hoocleandb < ./prisma/migrations/[migration_code_here]/migration.sqls
 ```
 
-turso db shell hoocleandb < ./prisma/migrations/[migration_code_here]/migration.sql
+

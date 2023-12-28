@@ -4,7 +4,8 @@ import { useClientForm } from '@/hooks/useClientForm';
 import React from 'react';
 
 export default function Page() {
-  const { getData, submit, validation, clientFormFields } = useClientForm();
+  const { getData, submit, validation, clientFormFields, onFocus } =
+    useClientForm();
 
   return (
     <div className="clientForm">
@@ -31,14 +32,16 @@ export default function Page() {
               className={!validation[field.errorName] ? 'formWarning' : ''}
             />
 
-            {field.error !== '' && !validation[field.errorName] && (
-              <p
-                key={`error-${field.name}`}
-                className="formWarning"
-              >
-                {field.error}
-              </p>
-            )}
+            {field.error !== '' &&
+              !validation[field.errorName] &&
+              onFocus[field.errorName] && (
+                <p
+                  key={`error-${field.name}`}
+                  className="formWarning"
+                >
+                  {field.error}
+                </p>
+              )}
           </React.Fragment>
         ))}
 

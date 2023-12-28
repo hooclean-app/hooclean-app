@@ -13,7 +13,9 @@ export const useClientForm = () => {
   const [validation, setValidation] = useState<Record<string, boolean>>(
     dataValidation_INITIAL_VALUE
   );
-
+  const [onFocus, setOnFocus] = useState<Record<string, boolean>>(
+    dataValidation_INITIAL_VALUE
+  );
   useEffect(() => {
     setValidation(validateData(data));
   }, [data]);
@@ -25,6 +27,12 @@ export const useClientForm = () => {
     };
     setData(newData);
     setValidation(validateData(newData));
+    const currentField = {
+      ...dataValidation_INITIAL_VALUE,
+      [e.target.name]: true,
+    };
+    setOnFocus(currentField);
+    console.log('weee', onFocus);
   };
 
   const submit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -147,5 +155,5 @@ export const useClientForm = () => {
     },
   ];
 
-  return { getData, submit, validation, clientFormFields };
+  return { getData, submit, validation, clientFormFields, onFocus };
 };
