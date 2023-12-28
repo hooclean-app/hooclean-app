@@ -27,7 +27,7 @@ export const registerClient = async (data: ClientRegister) => {
   return res;
 };
 
-export const registerUser = async (data: ClientRegister) => {
+export const registerUser = async (data: UserRegister) => {
   console.log(data);
   const res = await fetch('/api/auth/register-user', {
     method: 'POST',

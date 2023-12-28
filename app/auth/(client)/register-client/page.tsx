@@ -31,8 +31,18 @@ export default function Page() {
               onChange={getData}
               key={index}
               className={!validation[field.name] ? 'formWarning' : ''}
+              {...(field.list ? { list: `${field.name}-list` } : {})}
             />
-
+            {field.list && (
+              <datalist id={`${field.name}-list`}>
+                {field.list.map((item, index) => (
+                  <option
+                    key={index}
+                    value={item}
+                  />
+                ))}
+              </datalist>
+            )}
             {field.error !== '' &&
               !validation[field.errorName] &&
               onFocus[field.errorName] && (
@@ -53,6 +63,9 @@ export default function Page() {
           id="terms"
         />
         <label htmlFor="terms">Acepto los términos y condiciones</label>
+        {!validation.terms && (
+          <p className="formWarning">Acepte las condiciones del servicio.</p>
+        )}
         <button
           disabled={!validation.allfields}
           type="submit"

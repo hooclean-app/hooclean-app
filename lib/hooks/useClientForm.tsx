@@ -21,18 +21,19 @@ export const useClientForm = () => {
   }, [data]);
 
   const getData = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked, value, type } = e.target;
+    const newValue = type === 'checkbox' ? checked : value;
     const newData = {
       ...data,
-      [e.target.name]: e.target.value,
+      [name]: newValue,
     };
     setData(newData);
     setValidation(validateData(newData));
     const currentField = {
       ...dataValidation_INITIAL_VALUE,
-      [e.target.name]: true,
+      [name]: true,
     };
     setOnFocus(currentField);
-    console.log('weee', validation);
   };
 
   const submit = (e: React.FormEvent<HTMLFormElement>) => {

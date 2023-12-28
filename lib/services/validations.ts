@@ -1,4 +1,4 @@
-export const validateData = (values: ClientRegister) => {
+export const validateData = (values: UserRegister) => {
   // Regular expressions
   const regexTwoCharacters = /^(?![\s]{2,})[a-zA-ZÀ-ÖØ-öø-ÿ\s]{2,50}$/;
   const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -21,6 +21,7 @@ export const validateData = (values: ClientRegister) => {
     country: regexTwoCharacters.test(values.country),
     company: regexTwoCharacters.test(values.company),
     CIF: regexNineDigits.test(values.CIF),
+    terms: values.terms === true,
     allfields:
       regexTwoCharacters.test(values.name) &&
       regexEmail.test(values.email) &&
@@ -33,6 +34,7 @@ export const validateData = (values: ClientRegister) => {
       regexFiveDigits.test(values.postCode) &&
       regexTwoCharacters.test(values.country) &&
       regexTwoCharacters.test(values.company) &&
-      regexNineDigits.test(values.CIF),
+      regexNineDigits.test(values.CIF) &&
+      values.terms === true,
   };
 };
