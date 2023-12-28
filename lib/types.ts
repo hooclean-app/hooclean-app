@@ -32,3 +32,13 @@ interface ClientRegister {
   company: string;
   CIF: string;
 }
+
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  role: string;
+  createdAt: Date;
+  updatedAt: Date;
+}

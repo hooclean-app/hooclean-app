@@ -5,7 +5,7 @@ export const validateData = (values: ClientRegister) => {
   const regexPassword =
     /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   const regexNineDigits = /^\d{9}$/;
-  const regexSpecialCharacters = /^[\/\-,.\w\sºª]{1,100}$/;
+  const regexSpecialCharacters = /^(?=.*[a-zA-Z])[\/\-,.\w\sºª]{6,100}$/;
   const regexFiveDigits = /^\d{5}$/;
   return {
     name: regexTwoCharacters.test(values.name),

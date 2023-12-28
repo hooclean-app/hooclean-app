@@ -1,11 +1,10 @@
 'use client';
 
-import { useClientForm } from '@/hooks/useClientForm';
+import { useClientForm } from '@/lib/hooks/useClientForm';
 import React from 'react';
-
+import { clientFormTextInputs } from './inputFields';
 export default function Page() {
-  const { getData, submit, validation, clientFormFields, onFocus } =
-    useClientForm();
+  const { getData, submit, validation, onFocus } = useClientForm();
 
   return (
     <div className="clientForm">
@@ -13,7 +12,7 @@ export default function Page() {
         action=""
         onSubmit={submit}
       >
-        {clientFormFields.map((field, index) => (
+        {clientFormTextInputs.map((field, index) => (
           <React.Fragment key={index + field.name}>
             {field.label !== '' && (
               <label
@@ -29,7 +28,7 @@ export default function Page() {
               name={field.name}
               onChange={getData}
               key={index}
-              className={!validation[field.errorName] ? 'formWarning' : ''}
+              className={!validation[field.name] ? 'formWarning' : ''}
             />
 
             {field.error !== '' &&
@@ -45,6 +44,12 @@ export default function Page() {
           </React.Fragment>
         ))}
 
+        <input
+          type="checkbox"
+          name="terms"
+          onChange={getData}
+        />
+        <label htmlFor="terms">Acepto los términos y condiciones</label>
         <button
           disabled={!validation.allfields}
           type="submit"
