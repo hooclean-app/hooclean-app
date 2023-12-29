@@ -23,11 +23,11 @@ export default async function nextjs_future(request: NextRequest) {
     if (tokenPair) {
       const token = tokenPair.split('=')[1];
       const verified = await verifyJwtToken(token);
+      return NextResponse.next();
     } else {
       console.log('Token not found in the cookie.');
+      return NextResponse.redirect(new URL('/', request.url));
     }
-
-    return NextResponse.next();
   }
 
   return NextResponse.redirect(new URL('/', request.url));
