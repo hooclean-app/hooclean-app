@@ -1,8 +1,8 @@
-import Footer from '@/ui/home/footer';
-import Header from '@/ui/home/header';
-import Hero from '@/ui/home/hero';
+import Footer from '@/app/ui/home/footer';
+import Header from '@/app/ui/home/header';
+import Hero from '@/app/ui/home/hero';
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <Header />

@@ -1,12 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import '../styles/home-nav.css';
-@import '../styles/hero.css';
-@import '../styles/home-search.css';
-@import '../styles/footer.css';
-@import '../styles/home.css';
-@import '../styles/user-form.css';
+
+@import './styles/home-nav.css';
+@import './styles/hero.css';
+@import './styles/home-search.css';
+@import './styles/footer.css';
+@import './styles/home.css';
+@import './styles/user-form.css';
 /* :root  {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

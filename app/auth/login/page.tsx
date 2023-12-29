@@ -1,10 +1,12 @@
 'use client';
 import { useForm } from 'react-hook-form';
-
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { useFormState, useFormStatus } from 'react-dom';
+// import { authenticate } from '@/app/lib/actions';
 
 function LoginPage() {
+  // const [errorMessage, dispatch] = useFormState(authenticate, undefined);
   const {
     register,
     handleSubmit,
@@ -28,6 +30,7 @@ function LoginPage() {
     <div className="h-[calc(100vh-7rem)] flex justify-center items-center">
       <form
         onSubmit={onSubmit}
+        // action={dispatch}
         className="w-1/4"
       >
         {error && (
@@ -76,11 +79,36 @@ function LoginPage() {
 
         {errors.password && <span className="text-red-500 text-xs"></span>}
 
-        <button className="w-full bg-blue-500 text-white p-3 rounded-lg mt-2">
+        {/* <button className="w-full bg-blue-500 text-white p-3 rounded-lg mt-2">
           Login
-        </button>
+        </button> */}
+        <LoginButton />
+        <div
+          className="flex h-8 items-end space-x-1"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          {/* {errorMessage && (
+            <>
+              <p className="text-sm text-red-500">{errorMessage}</p>
+            </>
+          )} */}
+        </div>
       </form>
     </div>
   );
 }
 export default LoginPage;
+
+function LoginButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <button
+      className="mt-4 w-full"
+      aria-disabled={pending}
+    >
+      Log in
+    </button>
+  );
+}

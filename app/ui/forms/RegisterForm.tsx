@@ -4,7 +4,7 @@ import React from 'react';
 import FormFields from './Components/FormFields';
 import TermsInput from './Components/TermsInput';
 import FormButton from './Components/FormButton';
-import { useForm } from '@/lib/hooks/useForm';
+import { useForm } from '@/app/lib/hooks/useForm';
 
 interface Props {
   FormTextInputs: FormTextInputs[];

@@ -3,10 +3,10 @@ import {
   UserRegister_INITIAL_STATE,
   dataValidation_INITIAL_VALUE,
   userTypes,
-} from '@/lib/constants';
+} from '@/app/lib/constants';
 
-import { registerClient, registerUser } from '@/lib/services/register';
-import { validateData } from '@/lib/services/validations';
+import { registerClient, registerUser } from '@/app/lib/services/register';
+import { validateData } from '@/app/lib/services/validations';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 

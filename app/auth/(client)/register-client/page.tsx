@@ -1,6 +1,6 @@
-import { userTypes } from '@/lib/constants';
+import { userTypes } from '@/app/lib/constants';
 import { clientFormTextInputs } from './inputFields';
-import RegisterForm from '@/ui/forms/RegisterForm';
+import RegisterForm from '@/app/ui/forms/RegisterForm';
 
 export default function Page() {
   return (

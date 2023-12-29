@@ -1,4 +1,4 @@
-import Search from '@/ui/home/search';
+import Search from '@/app/ui/home/search';
 import Link from 'next/link';
 
 export default function Hero() {
