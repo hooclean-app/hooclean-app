@@ -1,44 +1,39 @@
 'use client';
-import { useForm } from 'react-hook-form';
+
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { useFormState, useFormStatus } from 'react-dom';
-// import { authenticate } from '@/app/lib/actions';
 
 function LoginPage() {
-  // const [errorMessage, dispatch] = useFormState(authenticate, undefined);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const [login, setLogin] = useState({ email: '', password: '' });
+
   const router = useRouter();
-  const [error, setError] = useState(null);
 
-  const onSubmit = handleSubmit(async (data) => {
-    console.log(data);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setLogin({ ...login, [name]: value });
+    console.log(login);
+  };
 
-    //     if (res.error) {
-    //       setError(res.error);
-    //     } else {
-    //       router.push('/dashboard');
-    //       router.refresh();
-    //     }
-  });
-
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: login.email,
+        password: login.password,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    console.log('LLega desde back', res);
+  };
   return (
     <div className="h-[calc(100vh-7rem)] flex justify-center items-center">
       <form
-        onSubmit={onSubmit}
-        // action={dispatch}
         className="w-1/4"
+        onSubmit={submit}
       >
-        {error && (
-          <p className="bg-red-500 text-lg text-white p-3 rounded mb-2">
-            {error}
-          </p>
-        )}
-
         <h1 className="text-slate-200 font-bold text-4xl mb-4">Login</h1>
 
         <label
@@ -49,12 +44,8 @@ function LoginPage() {
         </label>
         <input
           type="email"
-          {...register('email', {
-            required: {
-              value: true,
-              message: 'Email is required',
-            },
-          })}
+          name="email"
+          onChange={handleChange}
           className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
           placeholder="user@email.com"
         />
@@ -66,49 +57,18 @@ function LoginPage() {
           Password:
         </label>
         <input
+          name="password"
           type="password"
-          {...register('password', {
-            required: {
-              value: true,
-              message: 'Password is required',
-            },
-          })}
+          onChange={handleChange}
           className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
           placeholder="******"
         />
 
-        {errors.password && <span className="text-red-500 text-xs"></span>}
-
-        {/* <button className="w-full bg-blue-500 text-white p-3 rounded-lg mt-2">
+        <button className="w-full bg-blue-500 text-white p-3 rounded-lg mt-2">
           Login
-        </button> */}
-        <LoginButton />
-        <div
-          className="flex h-8 items-end space-x-1"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          {/* {errorMessage && (
-            <>
-              <p className="text-sm text-red-500">{errorMessage}</p>
-            </>
-          )} */}
-        </div>
+        </button>
       </form>
     </div>
   );
 }
 export default LoginPage;
-
-function LoginButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <button
-      className="mt-4 w-full"
-      aria-disabled={pending}
-    >
-      Log in
-    </button>
-  );
-}
