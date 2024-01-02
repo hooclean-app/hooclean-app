@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 import { verifyJwtToken } from './app/lib/auth';
+import { userTypes } from './app/lib/constants';
 
 const PUBLIC_FILE = /\.(.*)$/;
 
@@ -26,14 +27,33 @@ export default async function nextjs_future(request: NextRequest) {
       console.log('middleware verification', verified);
       if (verified) {
         console.log('role', verified.role);
+        console.log('path', request.nextUrl.pathname);
+        if (
+          request.nextUrl.pathname === '/dashboard/client' &&
+          verified.role === userTypes.client
+        ) {
+          return NextResponse.next();
+        }
+        if (
+          request.nextUrl.pathname === '/dashboard/user' &&
+          verified.role === userTypes.user
+        ) {
+          return NextResponse.next();
+        }
+
+        if (request.nextUrl.pathname !== `/dashboard/${verified.role}`) {
+          return NextResponse.redirect(
+            new URL(`/dashboard/${verified.role}`, request.url)
+          );
+        }
+
+        return NextResponse.redirect(new URL('/', request.url));
+      } else {
+        console.log('Token not found in the cookie.');
+        return NextResponse.redirect(new URL('/', request.url));
       }
-      return NextResponse.next();
-    } else {
-      console.log('Token not found in the cookie.');
-      return NextResponse.redirect(new URL('/', request.url));
     }
   }
-
   return NextResponse.redirect(new URL('/', request.url));
 }
 
