@@ -1,5 +1,6 @@
 'use client';
 
+import { userTypes } from '@/app/lib/constants';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -27,6 +28,18 @@ function LoginPage() {
       },
     });
     console.log('LLega desde back', res);
+    if (res.ok) {
+      const data = await res.json(); // Parse the response body as JSON
+      console.log('LLega desde back', data.user);
+      if (data.user.role === userTypes.client) {
+        router.push('/dashboard/client');
+      }
+      if (data.user.role === userTypes.user) {
+        router.push('/dashboard/user');
+      }
+    } else {
+      console.log('Error', res.status);
+    }
   };
   return (
     <div className="h-[calc(100vh-7rem)] flex justify-center items-center">
