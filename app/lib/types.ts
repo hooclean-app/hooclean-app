@@ -60,3 +60,8 @@ interface FormTextInputs {
 
 // User types
 type UserTypes = 'client' | 'user';
+
+type UserLogin = {
+  email: string;
+  password: string;
+};

@@ -28,14 +28,12 @@ export async function POST(request: NextRequest) {
     }
     console.log(userFound);
     if (userFound) {
-      console.log('Entra');
       const passwordOk = await bcrypt.compare(
         data.password,
         userFound.password
       );
-      console.log(passwordOk);
+      console.log('Password validation: ', passwordOk);
       if (passwordOk) {
-        console.log('Password correcta');
         const token = await new SignJWT({
           id: userFound.id,
           email: userFound.email,

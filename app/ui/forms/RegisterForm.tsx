@@ -30,7 +30,10 @@ export default function RegisterForm({ FormTextInputs, userType }: Props) {
           getData={getData}
         />
 
-        <FormButton validation={validation.allfields} />
+        <FormButton
+          validation={validation.allfields}
+          text="Registrarme"
+        />
       </form>
     </div>
   );

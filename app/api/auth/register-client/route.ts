@@ -38,7 +38,7 @@ export async function POST(request: {
         CIF: data.CIF,
       },
     });
-    console.log('aquí=', newUser);
+    console.log('new user:', newUser);
     const { password: _, ...user } = newUser;
     return NextResponse.json({ user });
   } catch (error) {

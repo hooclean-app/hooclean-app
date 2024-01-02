@@ -2,8 +2,9 @@ import React from 'react';
 
 interface Props {
   validation: boolean;
+  text: string;
 }
-export default function FormButton({ validation }: Props) {
+export default function FormButton({ validation, text }: Props) {
   return (
     <div>
       <button
@@ -11,7 +12,7 @@ export default function FormButton({ validation }: Props) {
         type="submit"
         className={!validation ? 'disabled' : ''}
       >
-        Registrarme
+        {text}
       </button>
     </div>
   );

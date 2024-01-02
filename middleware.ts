@@ -14,6 +14,7 @@ export default async function nextjs_future(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Checks cookie
   const cookie = request.cookies.get('access-token');
   if (cookie) {
     const cookiePairs = cookie.value.split('; ');
@@ -21,13 +22,13 @@ export default async function nextjs_future(request: NextRequest) {
       pair.startsWith('access-token=')
     );
 
+    // Gets token from cookie
     if (tokenPair) {
       const token = tokenPair.split('=')[1];
       const verified = await verifyJwtToken(token);
-      console.log('middleware verification', verified);
+
+      // Checks user role and validate path
       if (verified) {
-        console.log('role', verified.role);
-        console.log('path', request.nextUrl.pathname);
         if (
           request.nextUrl.pathname === '/dashboard/client' &&
           verified.role === userTypes.client
@@ -40,8 +41,9 @@ export default async function nextjs_future(request: NextRequest) {
         ) {
           return NextResponse.next();
         }
-
+        // Redirects in case of role / path missmatch
         if (request.nextUrl.pathname !== `/dashboard/${verified.role}`) {
+          console.log('Redirecting to right user type path.');
           return NextResponse.redirect(
             new URL(`/dashboard/${verified.role}`, request.url)
           );
@@ -54,6 +56,7 @@ export default async function nextjs_future(request: NextRequest) {
       }
     }
   }
+  console.log('Cookie not found in the cookie.');
   return NextResponse.redirect(new URL('/', request.url));
 }
 
