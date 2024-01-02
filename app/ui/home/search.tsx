@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { redirect } from 'next/navigation';
 
 export default function Search() {
@@ -13,12 +14,14 @@ export default function Search() {
         placeholder="Search"
         className="search__input"
       />
-      <button
-        className="search__button"
-        onChange={handleClick}
-      >
-        Search
-      </button>
+      <Link href="/auth/register-user">
+        <button
+          className="search__button"
+          onChange={handleClick}
+        >
+          Search
+        </button>
+      </Link>
     </div>
   );
 }

@@ -33,6 +33,13 @@
   font-weight: 600;
 }
 
+.header__cta button {
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 1em;
+}
+
 .cover {
   height: 100lvh;
 }

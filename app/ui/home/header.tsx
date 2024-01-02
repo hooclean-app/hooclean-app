@@ -29,8 +29,11 @@ export default function Header() {
           </ul>
         </div>
         <div className="header__cta">
-          <Link href="/book">
-            <button className="btn btn--primary">Book Now</button>
+          <Link href="/auth/login">
+            <button>Sign in </button>
+          </Link>
+          <Link href="/auth/register-client">
+            <button>Sign up</button>
           </Link>
         </div>
       </div>
